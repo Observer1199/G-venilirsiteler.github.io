@@ -1,0 +1,97 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(arkaplan.jpg);
+    background-size: cover;
+
+}
+.container{
+    background: color(srgb red green blue);
+    height: 10vh;
+    background-size: 100% 100%;
+}
+.container .navbar{
+    width: 100%;
+    height: 80%;
+    background-color: rgba(68, 11, 11, 0.53);
+    
+}
+.navbar .logo{
+    display: inline-block;
+    margin-left: 50px;
+    margin-top: 0%;
+
+
+}
+.navbar .logo a{
+    text-decoration: none;
+    font-size: 55px;
+    color: aliceblue;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.navbar ul{
+    float: right;
+    margin-right: 20PX;
+    margin-top: 15px;
+    
+
+}
+.navbar ul li{
+    display: inline-block;
+}
+.navbar ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 23px;
+    padding: 13px 6px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.navbar ul li a:hover{
+    background-color: rgb(41, 37, 66);
+    border-radius: 2px;
+    border-radius: 20%;
+
+}
+
+
+
+.box{
+    width: 1200px;
+    border-radius: 10%;
+background-color: rgba(55, 7, 50, 0.434);
+text-align: center;
+margin: auto;
+margin-top: 3;
+color:  white;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.box img{
+    border-radius: 50%;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.box img:hover{
+    transform: scale(0.9);
+}
+.box img{
+    width: 100px;
+    height: 100px;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    
+}
+.box li{
+    display: inline-block;
+}
+.box li a{
+
+    text-decoration: wavy;
+    color: white;
+}
+.box li b{
+
+color: white;
+}

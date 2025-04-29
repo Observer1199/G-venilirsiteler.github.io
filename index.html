@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Yalnızca Harici Tarayıcı</title>
+  <meta charset="UTF-8">
+  <title>Telegram Tespiti Testi</title>
 </head>
 <body>
 
 <script>
   var ua = navigator.userAgent || navigator.vendor || window.opera;
-  // Telegram in-app browser çoğunlukla "Telegram" veya "TgWebView" ifadesi içerir.
-  var isTelegramInApp = ua.indexOf("Telegram") !== -1 || ua.indexOf("TgWebView") !== -1;
+  alert("User-Agent: " + ua); // Telegram'da açıp hangi ifade geçiyor bakın
 
-  if (isTelegramInApp) {
-    document.write("<h2>Bu site Telegram içi tarayıcıda açılmaz. Lütfen harici tarayıcı kullanın.</h2>");
+  // Telegram'da tespit edilebilecek bazı yaygın örnekler: "TgWebView", "Telegram", "TelegramAndroid", "Telegram-iOS"
+  // Tespit için birden fazla ifadenin yer aldığı bir regex yazabilirsiniz:
+  var isTelegram = /TgWebView|Telegram|TelegramAndroid|Telegram-iOS/i.test(ua);
+
+  if (isTelegram) {
+    document.write("<h2>Telegram tarayıcısı tespit edildi.</h2>");
   } else {
-    // Buraya normalde vermek istediğiniz yönlendirme veya içerik
-    // Örneğin otomatik yönlendirme:
-    window.location = "https://t.ly/casimoonkent";
+    document.write("<h2>Telegram tarayıcısı TESPİT EDİLEMEDİ, normal tarayıcı gibi davranıyor.</h2>");
   }
 </script>
 

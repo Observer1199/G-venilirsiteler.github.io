@@ -79,6 +79,13 @@
 
 <script>
   function openInBrowsers(url) {
+    var isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    if (!isMobile) {
+      window.location = url;
+      return;
+    }
+
     var cleanUrl = url.replace(/^https?:\/\//, '');
     var attempts = [
       'googlechrome://' + cleanUrl,
@@ -104,3 +111,4 @@
 
 </body>
 </html>
+

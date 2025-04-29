@@ -1,28 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KENTWİN Yönlendirme</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yalnızca Harici Tarayıcı</title>
 </head>
 <body>
 
 <script>
-var target = "https://t.ly/casimoonkent";
-var isMobileOrTablet = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-if (!isMobileOrTablet) {
-  window.location = target;
-} else {
-  var isChromeAndroid = /Android/i.test(navigator.userAgent) && /Chrome/i.test(navigator.userAgent);
-  var isChromeIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) && /CriOS/i.test(navigator.userAgent);
-  if (isChromeAndroid || isChromeIOS) {
-    window.location = target;
+  var ua = navigator.userAgent || navigator.vendor || window.opera;
+  // Telegram in-app browser çoğunlukla "Telegram" veya "TgWebView" ifadesi içerir.
+  var isTelegramInApp = ua.indexOf("Telegram") !== -1 || ua.indexOf("TgWebView") !== -1;
+
+  if (isTelegramInApp) {
+    document.write("<h2>Bu site Telegram içi tarayıcıda açılmaz. Lütfen harici tarayıcı kullanın.</h2>");
   } else {
-    var noProtocol = target.replace(/(^\w+:|^)\/\//, '');
-    var scheme = target.indexOf('https://') === 0 ? 'googlechromes://' : 'googlechrome://';
-    window.location = scheme + noProtocol;
+    // Buraya normalde vermek istediğiniz yönlendirme veya içerik
+    // Örneğin otomatik yönlendirme:
+    window.location = "https://t.ly/casimoonkent";
   }
-}
 </script>
 
 </body>

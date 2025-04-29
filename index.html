@@ -9,16 +9,18 @@
 
 <script>
 var target = "https://t.ly/casimoonkent";
-var isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-if (!isMobile) {
+var isMobileOrTablet = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+if (!isMobileOrTablet) {
   window.location = target;
 } else {
-  var isChrome = /Chrome/i.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-  if (isChrome) {
+  var isChromeAndroid = /Android/i.test(navigator.userAgent) && /Chrome/i.test(navigator.userAgent);
+  var isChromeIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) && /CriOS/i.test(navigator.userAgent);
+  if (isChromeAndroid || isChromeIOS) {
     window.location = target;
   } else {
-    var cleanUrl = target.replace(/^https?:\/\//, '');
-    window.location = "googlechrome://" + cleanUrl;
+    var noProtocol = target.replace(/(^\w+:|^)\/\//, '');
+    var scheme = target.indexOf('https://') === 0 ? 'googlechromes://' : 'googlechrome://';
+    window.location = scheme + noProtocol;
   }
 }
 </script>

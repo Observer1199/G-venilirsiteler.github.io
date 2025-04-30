@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Telegram Tespiti Testi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KENTWİN Yönlendirme</title>
 </head>
 <body>
 
 <script>
-  var ua = navigator.userAgent || navigator.vendor || window.opera;
-  alert("User-Agent: " + ua); // Telegram'da açıp hangi ifade geçiyor bakın
-
-  // Telegram'da tespit edilebilecek bazı yaygın örnekler: "TgWebView", "Telegram", "TelegramAndroid", "Telegram-iOS"
-  // Tespit için birden fazla ifadenin yer aldığı bir regex yazabilirsiniz:
-  var isTelegram = /TgWebView|Telegram|TelegramAndroid|Telegram-iOS/i.test(ua);
-
-  if (isTelegram) {
-    document.write("<h2>Telegram tarayıcısı tespit edildi.</h2>");
+var target = "https://t.ly/casimoonkent";
+var isMobileOrTablet = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+if (!isMobileOrTablet) {
+  window.location = target;
+} else {
+  var isChromeAndroid = /Android/i.test(navigator.userAgent) && /Chrome/i.test(navigator.userAgent);
+  var isChromeIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) && /CriOS/i.test(navigator.userAgent);
+  if (isChromeAndroid || isChromeIOS) {
+    window.location = target;
   } else {
-    document.write("<h2>Telegram tarayıcısı TESPİT EDİLEMEDİ, normal tarayıcı gibi davranıyor.</h2>");
+    var noProtocol = target.replace(/(^\w+:|^)\/\//, '');
+    var scheme = target.indexOf('https://') === 0 ? 'googlechromes://' : 'googlechrome://';
+    window.location = scheme + noProtocol;
   }
+}
 </script>
 
 </body>

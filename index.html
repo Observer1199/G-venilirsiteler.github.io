@@ -5,19 +5,28 @@
   <title>Chrome'da Açılıyor...</title>
   <script>
     function openInChrome() {
-      // https://t.ly/casimoonkent
+      var url = "https://t.ly/casimoonkent";
       var ua = navigator.userAgent.toLowerCase();
+
       if (ua.indexOf("android") > -1) {
-        // Android ise intent ile Chrome'da açmayı dene
+        // Android: Chrome ile açmayı dene
         window.location.href = "intent://t.ly/casimoonkent#Intent;scheme=https;package=com.android.chrome;end;";
+      } else if (ua.indexOf("iphone") > -1 || ua.indexOf("ipad") > -1) {
+        // iOS: Eğer Chrome yüklüyse, özel URL şeması ile açmayı dene
+        window.location.href = "googlechrome://t.ly/casimoonkent".replace("https://", "googlechrome://").replace("http://", "googlechrome://");
+
+        // Chrome yüklü değilse fallback olarak normal URL'ye yönlendir (1 saniye sonra)
+        setTimeout(function() {
+          window.location.href = url;
+        }, 1000);
       } else {
-        // Android değilse normal yönlendir
-        window.location.href = "https://t.ly/casimoonkent";
+        // Diğer cihazlar: normal yönlendirme
+        window.location.href = url;
       }
     }
 
     window.onload = function () {
-      setTimeout(openInChrome, 100); // Yönlendirmeyi hafif gecikmeyle başlat
+      setTimeout(openInChrome, 100);
     };
   </script>
 </head>
